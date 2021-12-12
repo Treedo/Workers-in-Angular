@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 class Worker {
 
@@ -23,9 +23,10 @@ class Worker {
 })
 
 export class AppComponent {
-
+  
   id: number = 6;
-  name: string = "Новый работник";
+  nameOfNewWorkers: string = "";
+
   title = 'workers';
 
   workers: Worker[] =
@@ -38,17 +39,21 @@ export class AppComponent {
 
     amountOfWorkers: number = this.workers.length ;
     
-  addWorker(name: string, id: number): void {
-    if (name == null || name.trim() == "" || id == null)
+  addWorker(data: any): void {
+    if (data.name == null || data.name.trim() == "" || this.id == null)
       return;
     this.id++;
-    this.workers.push(new Worker(id, name, new Date(), true));
+    this.workers.push(new Worker(this.id, data.name, data.bday, true));
     this.amountOfWorkers = this.workers.length ;
   }
 
   delWorker(worker: Worker): void {
     this.workers = this.workers.filter(obj => obj !== worker);
     this.amountOfWorkers = this.workers.length ;
+  }
+
+  nameOfNewWorkersCange(name: string): void {
+    this.nameOfNewWorkers = name ;
   }
 
 }

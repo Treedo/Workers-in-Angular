@@ -8,10 +8,20 @@ import { Component, Input} from '@angular/core';
 export class NewsComponent {
 
   amountOfWorkersText: String = "[0]" ;
+  nameOfNewWorkers: String = "..." ;
 
   @Input()
   set amountOfWorkers(val:number) {
     this.amountOfWorkersText = "[" + val + "]" ;
+  }
+
+  @Input()
+  set name(val:string) {
+    if (val.trim() == "") {
+      this.nameOfNewWorkers = "...";
+    } else {
+      this.nameOfNewWorkers = " " + val.trim() + "!";
+    }
   }
 
 }
