@@ -8,19 +8,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PosterComponent {
 
-  _name: string = "";
+  @Input() name: string = "";
   bday: Date = new Date() ;
 
   @Output() addWor = new EventEmitter();
-  @Output() newWorkerName = new EventEmitter();
+  @Output() nameChange = new EventEmitter();
 
   addWorker(name: string, bday: Date): void {
     this.addWor.emit({name: name, bday: bday}); 
   }
 
-  set name(val:string) {
-    this._name = val;
-    this.newWorkerName.emit(val);
+  onNameChange(val:string) {
+    this.name = val;
+    this.nameChange.emit(val);
   }
 
 }

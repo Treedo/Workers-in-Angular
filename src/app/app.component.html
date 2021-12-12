@@ -2,7 +2,8 @@
     <h1>Список workers</h1>
 </div>
 <div class="panel">
-    <app-poster (addWor)="addWorker($event)" (newWorkerName)="nameOfNewWorkersCange($event)"></app-poster>
+    <app-poster (addWor)="addWorker($event)" [(name)]="nameOfNewWorkers"></app-poster>
+    <P>{{nameOfNewWorkers}}</P>
     <table class="table table-striped">
         <thead>
             <tr>

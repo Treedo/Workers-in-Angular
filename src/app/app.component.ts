@@ -25,7 +25,7 @@ class Worker {
 export class AppComponent {
   
   id: number = 6;
-  nameOfNewWorkers: string = "";
+  nameOfNewWorkers: string = "New worker...";
 
   title = 'workers';
 
@@ -52,8 +52,8 @@ export class AppComponent {
     this.amountOfWorkers = this.workers.length ;
   }
 
-  nameOfNewWorkersCange(name: string): void {
-    this.nameOfNewWorkers = name ;
-  }
+  //nameOfNewWorkersCange(name: string): void {
+  //  this.nameOfNewWorkers = name ;
+  //}
 
 }
