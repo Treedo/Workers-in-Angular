@@ -7,8 +7,13 @@ import { Component, Input} from '@angular/core';
 })
 export class NewsComponent {
 
+  activeRed: boolean = false ;
   amountOfWorkersText: String = "[0]" ;
   nameOfNewWorkers: String = "..." ;
+
+  cangeFont(){
+    this.activeRed = ! this.activeRed ;
+  }
 
   @Input()
   set amountOfWorkers(val:number) {
