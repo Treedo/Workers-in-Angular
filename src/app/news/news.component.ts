@@ -25,7 +25,7 @@ export class NewsComponent {
     if (val.trim() == "") {
       this.nameOfNewWorkers = "...";
     } else {
-      this.nameOfNewWorkers = " " + val.trim() + "!";
+      this.nameOfNewWorkers = " " + val.trim() + "!" ;
     }
   }
 
