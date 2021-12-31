@@ -7,9 +7,15 @@ import { Component, Input} from '@angular/core';
 })
 export class NewsComponent {
 
+  showNews: boolean = true ;
+
   activeRed: boolean = false ;
   amountOfWorkersText: String = "[0]" ;
   nameOfNewWorkers: String = "..." ;
+
+  showHideNews(){
+    this.showNews = !this.showNews ;
+  }
 
   cangeFont(){
     this.activeRed = ! this.activeRed ;

@@ -1,5 +1,14 @@
 <div>
-    <h2 [ngClass]="{redFont:activeRed}" (click)="cangeFont()" appBold [itIsTitle]=true>News:</h2>
-    <p>We have already {{amountOfWorkersText}} workers!</p>
+    <div class="row justify-content-around">
+        <div class="col-8">
+            <h2 [ngClass]="{redFont:activeRed}" (click)="cangeFont()" appBold [itIsTitle]=true>News:</h2>
+        </div>
+        <div class="col-4">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn float-right" (click)="showHideNews()">{{showNews ? 'Hide news' : 'Show news'}}</button>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="showNews">We have already {{amountOfWorkersText}} workers!</p>
     <p appBold [itIsTitle]=false>And we want add new person {{nameOfNewWorkers}}</p>
 </div>

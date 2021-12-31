@@ -5,3 +5,7 @@ h2 {
 .redFont {
     color: red;
 }
+
+.container {
+    display: flex;
+  }
