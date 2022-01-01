@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Worker } from './models/workers/worker';
-import { LogService } from './log.service';
+import { Worker } from "src/app/models/workers/worker";
+import { LogService } from 'src/app/services/log/log.service';
 
 @Injectable({
   providedIn: 'root'

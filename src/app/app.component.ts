@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { DataService } from './data.service';
+import { DataService } from './services/data/data.service';
 import { Worker } from './models/workers/worker';
 
 @Component({

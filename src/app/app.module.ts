@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewsComponent } from './news/news.component';
 import { PosterComponent } from './poster/poster.component';
-import { BoldDirective } from './bold.directive';
+import { BoldDirective } from './directives/bold.directive';
 
 @NgModule({
   declarations: [
