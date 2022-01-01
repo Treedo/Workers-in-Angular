@@ -1,7 +1,7 @@
 <div>
     <div class="row justify-content-around">
         <div class="col-8">
-            <h2 [ngClass]="{redFont:activeRed}" (click)="cangeFont()" appBold [itIsTitle]=true>News:</h2>
+            <h2 [ngClass]="{redFont:activeRed}" (click)="cangeFont()" appBold [itIsTitle]=true *ngIf="showNews">News:</h2>
         </div>
         <div class="col-4">
             <div class="d-flex justify-content-end">
@@ -9,6 +9,5 @@
             </div>
         </div>
     </div>
-    <p *ngIf="showNews">We have already {{amountOfWorkersText}} workers!</p>
-    <p appBold [itIsTitle]=false>And we want add new person {{nameOfNewWorkers}}</p>
+    <p *ngIf="showNews">We have already [{{workers.length}}] workers!</p>
 </div>

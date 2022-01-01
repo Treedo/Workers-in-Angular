@@ -1,4 +1,6 @@
 import { Component, Input} from '@angular/core';
+import { DataService } from 'src/app/services/data/data.service';
+import { Worker } from 'src/app/models/workers/worker';
 
 @Component({
   selector: 'app-news',
@@ -7,11 +9,17 @@ import { Component, Input} from '@angular/core';
 })
 export class NewsComponent {
 
+  constructor(private dataServ: DataService) { }
+
+  workers: Worker[] = [];
+
+  ngOnInit() {
+    this.workers = this.dataServ.getWorkers();
+  }
+
   showNews: boolean = true ;
 
   activeRed: boolean = false ;
-  amountOfWorkersText: String = "[0]" ;
-  nameOfNewWorkers: String = "..." ;
 
   showHideNews(){
     this.showNews = !this.showNews ;
@@ -19,20 +27,6 @@ export class NewsComponent {
 
   cangeFont(){
     this.activeRed = ! this.activeRed ;
-  }
-
-  @Input()
-  set amountOfWorkers(val:number) {
-    this.amountOfWorkersText = "[" + val + "]" ;
-  }
-
-  @Input()
-  set name(val:string) {
-    if (val.trim() == "") {
-      this.nameOfNewWorkers = "...";
-    } else {
-      this.nameOfNewWorkers = " " + val.trim() + "!" ;
-    }
   }
 
 }

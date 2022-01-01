@@ -1,0 +1,26 @@
+<div class="page-header">
+    <h1>Список workers</h1>
+</div>
+<div class="panel">
+    <app-poster (addWor)="addWorker($event)" [(name)]="nameOfNewWorkers"></app-poster>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let worker of workers">
+                <td>{{worker.id}}</td>
+                <td>{{worker.name}}</td>
+                <td>{{worker.date | date:'d MMMM y'}}</td>
+                <td><input type="checkbox" [ngModel]="worker.active" /></td>
+                <td><button class="btn btn-default" (click)="delWorker(worker)">Del</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
