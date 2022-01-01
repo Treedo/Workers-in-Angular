@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Worker } from './models/workers/worker';
+import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private logServ: LogService) { }
 
   id: number = 6;
 
@@ -18,6 +19,7 @@ export class DataService {
   ];
 
   getWorkers(): Worker[] {
+    this.logServ.write("Getting " + this.workers.length  + " workers from main data") ;
     return this.workers ;
   }
 
@@ -26,10 +28,12 @@ export class DataService {
       return;
     this.id++;
     this.workers.push(new Worker(this.id, data.name, data.bday, true));
+    this.logServ.write("Worker " + data.name + " was added.")
   }
 
   delWorker(worker: Worker): void {
     this.workers.splice(this.workers.findIndex((el) => el == worker), 1);
+    this.logServ.write("Worker " + worker.name + " was deleted.")
   }
   
 }
