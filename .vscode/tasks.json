@@ -2,9 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "start",
+      "label": "startTreedo",
       "type": "npm",
-      "script": "start",
+      "script": "startTreedo",
       "isBackground": true,
       "presentation": {
         "focus": true,

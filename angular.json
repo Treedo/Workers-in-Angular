@@ -60,6 +60,20 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "treedo": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.treedo.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -72,6 +86,9 @@
             },
             "development": {
               "browserTarget": "workers:build:development"
+            },
+            "treedo": {
+              "browserTarget": "workers:build:treedo"
             }
           },
           "defaultConfiguration": "development"
