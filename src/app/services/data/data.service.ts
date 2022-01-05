@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Worker } from "src/app/models/workers/worker";
 import { LogService } from 'src/app/services/log/log.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private logServ: LogService) { }
+  constructor(
+    private logServ: LogService,
+    private http: HttpClient) { }
 
   id: number = 6;
-
-  workers: Worker[] = [
-    { name: "Aня", id: 1, date: new Date(1995, 5, 3), active: false },
-    { name: "Марина", id: 2, date: new Date(1988, 15, 12), active: true },
-    { name: "Альона", id: 4, date: new Date(1995, 1, 13), active: false },
-    { name: "Вика", id: 5, date: new Date(2000, 7, 22), active: false },
-  ];
+  workers: Worker[] = [];
 
   getWorkers(): Worker[] {
+
+    const headers = { 'x-access-token': environment.api_token };
+    this.http.get<any>(environment.api_url + "/worker/list?company=18", { headers }).subscribe(data => {
+      
+      data.forEach((el: any) => {
+        this.workers.push(
+          new Worker(el.id, el.name, new Date(), true)
+        ) ; 
+      });
+      
+    });
+
     this.logServ.write("Getting " + this.workers.length  + " workers from main data") ;
     return this.workers ;
   }

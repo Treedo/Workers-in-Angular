@@ -7,6 +7,7 @@ import { NewsComponent } from './components/news/news.component';
 import { PosterComponent } from './components/poster/poster.component';
 import { BoldDirective } from './directives/bold.directive';
 import { WorkersListComponent } from './components/workers-list/workers-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { WorkersListComponent } from './components/workers-list/workers-list.com
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
