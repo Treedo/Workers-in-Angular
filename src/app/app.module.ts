@@ -8,6 +8,9 @@ import { PosterComponent } from './components/poster/poster.component';
 import { BoldDirective } from './directives/bold.directive';
 import { WorkersListComponent } from './components/workers-list/workers-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
     NewsComponent,
     PosterComponent,
     BoldDirective,
-    WorkersListComponent
+    WorkersListComponent,
+    HomeComponent,
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
