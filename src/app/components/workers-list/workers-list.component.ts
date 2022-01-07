@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data/data.service';
-import { Worker } from 'src/app/models/workers/worker'; 
-
+import { Worker } from 'src/app/models/workers/worker';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-workers-list',
@@ -10,11 +11,26 @@ import { Worker } from 'src/app/models/workers/worker';
 })
 export class WorkersListComponent implements OnInit {
 
-  constructor(private dataServ: DataService) { }
-
   nameOfNewWorkers: string = "New worker...";
   title = 'workers';
+  limit: String = "6";
   workers: Worker[] = [];
+
+  private querySubscription: Subscription;
+  constructor(private dataServ: DataService, private activateRoute: ActivatedRoute,
+  ) {
+
+    this.querySubscription = activateRoute.queryParams.subscribe(
+      (queryParam: any) => {
+        if (queryParam['limit'] != undefined) {
+          this.limit =  queryParam['limit'];
+        }
+        
+      }
+    );
+  }
+
+
 
   addWorker(data: any): void {
     if (data.name == null || data.name.trim() == "")
@@ -27,7 +43,7 @@ export class WorkersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.workers = this.dataServ.getWorkers();
+    this.workers = this.dataServ.getWorkers(this.limit);
   }
 
 }

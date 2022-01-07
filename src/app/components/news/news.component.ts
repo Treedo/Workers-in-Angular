@@ -14,7 +14,7 @@ export class NewsComponent {
   workers: Worker[] = [];
 
   ngOnInit() {
-    this.workers = this.dataServ.getWorkers();
+    this.workers = this.dataServ.workers;
   }
 
   showNews: boolean = true ;

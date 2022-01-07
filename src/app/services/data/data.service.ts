@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Worker } from "src/app/models/workers/worker";
 import { LogService } from 'src/app/services/log/log.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,10 +16,15 @@ export class DataService {
   id: number = 6;
   workers: Worker[] = [];
 
-  getWorkers(): Worker[] {
+  getWorkers(limit: String): Worker[] {
+
+    const params = new HttpParams()
+    .set('company', "18")
+    .set('lenght', limit as string);
+
 
     const headers = { 'x-access-token': environment.api_token };
-    this.http.get<any>(environment.api_url + "/worker/list?company=18", { headers }).subscribe(data => {
+    this.http.get<any>(environment.api_url + "/worker/list", { headers: headers, params: params }).subscribe(data => {
       
       data.forEach((el: any) => {
         this.workers.push(
