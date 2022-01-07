@@ -19,6 +19,7 @@
                 <td>{{worker.name}}</td>
                 <td>{{worker.date | date:'d MMMM y'}}</td>
                 <td><input type="checkbox" [ngModel]="worker.active" /></td>
+                <td><a href="/worker/{{worker.id}}" class="btn btn-default"> Show</a></td>
                 <td><button class="btn btn-default" (click)="delWorker(worker)">Del</button></td>
             </tr>
         </tbody>
